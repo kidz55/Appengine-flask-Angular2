@@ -1,0 +1,33 @@
+.word{
+	font-size: 22px;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.word:hover{
+	color : blue;
+	cursor : pointer;
+}
+
+.title{
+	font-size: 25px;
+	font-family: 'Montserrat', sans-serif;
+}
+
+#imageFit{
+	width : 100%;
+}
+
+.clickable{
+	cursor : pointer;
+}
+
+.buttonCustom{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.margTop{
+	
+}
