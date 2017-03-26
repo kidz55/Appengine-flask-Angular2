@@ -15,7 +15,7 @@ export class AppComponent {
   public label : string = "";
 
   constructor (private httpService: HttpService,overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal,private slimLoadingBarService: SlimLoadingBarService) {
-  	overlay.defaultViewContainer = vcRef;	
+  	overlay.defaultViewContainer = vcRef;
   	this.getInitPictures();
   }
 
@@ -26,6 +26,7 @@ export class AppComponent {
   public urls : any = [];
   public currentUrl : any = [];
   public currentTens : number ;
+  public emptyWord : boolean = false;
 
   getInitPictures(){
   	this.slimLoadingBarService.start(() => {
@@ -42,11 +43,14 @@ export class AppComponent {
         });
   	this.httpService.getWords(this.label)
                      .subscribe(
-                       words => {this.words = words;this.slimLoadingBarService.complete();},
+                       words => {this.words = words;this.slimLoadingBarService.complete();
+                         if(this.words.length == 0){
+                           this.emptyWord = true;
+                         } else {
+                           this.emptyWord = false;
+                         }
+                       },
                        error =>  {console.log(error);this.slimLoadingBarService.stop();} );
-
-                       
-
   }
 
   getImage(code){
@@ -57,7 +61,7 @@ export class AppComponent {
                      .subscribe(
                        urls => {this.initUrl(urls);this.slimLoadingBarService.complete();},
                        error =>  {console.log(error); this.slimLoadingBarService.stop();} );
-                       
+
   }
 
   initUrl(urls){
