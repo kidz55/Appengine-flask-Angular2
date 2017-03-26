@@ -44,6 +44,9 @@ export class AppComponent {
                      .subscribe(
                        words => {this.words = words;this.slimLoadingBarService.complete();},
                        error =>  {console.log(error);this.slimLoadingBarService.stop();} );
+
+                       
+
   }
 
   getImage(code){
@@ -54,6 +57,7 @@ export class AppComponent {
                      .subscribe(
                        urls => {this.initUrl(urls);this.slimLoadingBarService.complete();},
                        error =>  {console.log(error); this.slimLoadingBarService.stop();} );
+                       
   }
 
   initUrl(urls){

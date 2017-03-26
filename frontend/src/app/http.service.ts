@@ -8,7 +8,6 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class HttpService {
   private wordsUrl = 'api/heroes';  // URL to web API
-
   constructor (private http: Http) {}
   getWords(label): Observable<any[]> {
 
@@ -42,6 +41,10 @@ export class HttpService {
 
   private extractData(res: Response) {
     let body = res.json();
+    console.log(body);
+    if(!Array.isArray(body.data)){
+       return [];
+    }
     return body.data || { };
   }
 
